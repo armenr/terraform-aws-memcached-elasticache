@@ -14,7 +14,7 @@ resource "aws_elasticache_cluster" "memcached" {
   az_mode                = "${var.desired_clusters == 1 ? "single-az" : "cross-az"}"
   parameter_group_name   = "${var.parameter_group}"
   subnet_group_name      = "${var.subnet_group}"
-  security_group_ids     = ["${var.associated_security_groups}"]
+  security_group_ids     = ["${var.security_group_ids}"]
   maintenance_window     = "${var.maintenance_window}"
   notification_topic_arn = "${var.notification_topic_arn}"
   port                   = "11211"
