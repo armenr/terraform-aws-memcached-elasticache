@@ -1,17 +1,4 @@
 #
-# Security group resources
-#
-resource "aws_security_group" "memcached" {
-  vpc_id = "${var.vpc_id}"
-
-  tags {
-    Name        = "sgCacheCluster"
-    Project     = "${var.project}"
-    Environment = "${var.environment}"
-  }
-}
-
-#
 # ElastiCache resources
 #
 resource "aws_elasticache_cluster" "memcached" {
@@ -27,7 +14,7 @@ resource "aws_elasticache_cluster" "memcached" {
   az_mode                = "${var.desired_clusters == 1 ? "single-az" : "cross-az"}"
   parameter_group_name   = "${var.parameter_group}"
   subnet_group_name      = "${var.subnet_group}"
-  security_group_ids     = ["${aws_security_group.memcached.id}"]
+  security_group_ids     = ["${var.associated_security_groups}"]
   maintenance_window     = "${var.maintenance_window}"
   notification_topic_arn = "${var.notification_topic_arn}"
   port                   = "11211"
@@ -36,6 +23,7 @@ resource "aws_elasticache_cluster" "memcached" {
     Name        = "CacheCluster"
     Project     = "${var.project}"
     Environment = "${var.environment}"
+    Terraform_Managed = "true"
   }
 }
 

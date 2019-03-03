@@ -27,7 +27,7 @@ variable "instance_type" {
 }
 
 variable "engine_version" {
-  default = "1.4.33"
+  default = "1.5.10"
 }
 
 variable "notification_topic_arn" {}
@@ -43,4 +43,8 @@ variable "alarm_memory_threshold_bytes" {
 
 variable "alarm_actions" {
   type = "list"
+}
+
+variable "associated_security_groups" {
+  default = ""
 }
