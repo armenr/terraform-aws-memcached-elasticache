@@ -45,6 +45,6 @@ variable "alarm_actions" {
   type = "list"
 }
 
-variable "security_group_ids" {
+variable "security_groups" {
   default = []
 }
