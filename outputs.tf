@@ -2,6 +2,10 @@ output "id" {
   value = "${aws_elasticache_cluster.memcached.id}"
 }
 
+# output "cache_security_group_id" {
+#   value = "${aws_security_group.memcached.id}"
+# }
+
 output "port" {
   value = "11211"
 }

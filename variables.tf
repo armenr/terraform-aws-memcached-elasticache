@@ -46,5 +46,5 @@ variable "alarm_actions" {
 }
 
 variable "security_group_ids" {
-  default = ""
+  default = []
 }
